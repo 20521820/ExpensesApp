@@ -5,6 +5,8 @@ import { Input, Button, Text, Image } from 'react-native-elements'
 import * as ImagePicker from 'expo-image-picker';
 import { LinearGradient } from 'expo-linear-gradient';
 import { auth, db } from '../firebase'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { useTogglePasswordVisibility } from '../components/useTogglePasswordVisibility';
 
 const RegisterScreen = ({ navigation }) => {
   const [fullName, setFullName] = useState('')
@@ -15,7 +17,8 @@ const RegisterScreen = ({ navigation }) => {
 
   const [image, setImage] = useState(null);
 
-
+  const { paswordVisibility, rightIcon, handlePasswordVisibility } =
+    useTogglePasswordVisibility();
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -86,6 +89,7 @@ const RegisterScreen = ({ navigation }) => {
     setPassword('')
     setImageUrl('')
   }
+
   return (
     <KeyboardAvoidingView behavior='padding' style={styles.container}>
       <StatusBar style='light' />
@@ -130,15 +134,23 @@ const RegisterScreen = ({ navigation }) => {
           value={email}
           onChangeText={(text) => setEmail(text)}
         /> */}
-        <TextInput
-          style={styles.box}
-          placeholder='Password'
-          name='text'
-          autoFocus
-          secureTextEntry
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-        />
+        <View style={styles.inputPass}>
+          <TextInput
+            style={styles.inputField}
+            name="password"
+            placeholder="Password"
+            autoCapitalize="none"
+            autoCorrect={false}
+            textContentType='newPassword'
+            secureTextEntry={paswordVisibility}
+            value={password}
+            enablesReturnKeyAutomatically
+            onChangeText={(text) => setPassword(text)}
+          />
+          <Pressable onPress={handlePasswordVisibility}>
+            <MaterialCommunityIcons name={rightIcon} size={22} color='#232323' />
+          </Pressable>
+        </View>
         {/* <Input
           placeholder='Password'
           type='text'
@@ -181,7 +193,7 @@ const RegisterScreen = ({ navigation }) => {
       <Pressable style={styles.buttonRegister} onPress={signUp} loading={submitLoading}>
         <Text style={styles.text} >Sign up</Text>
       </Pressable>
-      <Text style={{marginTop: 8, fontSize: 12, letterSpacing: 0.25, color: 'gray', fontWeight: 'bold'}}>Or with</Text>
+      <Text style={{ marginTop: 8, fontSize: 12, letterSpacing: 0.25, color: 'gray', fontWeight: 'bold' }}>Or with</Text>
       <Button
         title="Already have an account? Login"
         onPress={() => navigation.navigate("Login")}
@@ -237,4 +249,20 @@ const styles = StyleSheet.create({
     letterSpacing: 0.25,
     color: "white",
   },
+  inputField: {
+    padding: 10,
+    fontSize: 15,
+    width: "90%",
+  },
+  inputPass: {
+    backgroundColor: 'white',
+    width: '100%',
+    borderRadius: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'gray',
+    marginBottom: 10,
+    marginTop: 10,
+  }
 })
