@@ -15,16 +15,19 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/and.png",
-        "backgroundColor": "#000000"
+        "backgroundColor": "#000000",
+        "googleServicesFile": "./google-services.json"
       }
     },
     "web": {
       "favicon": "./assets/favicon.ico"
-    }
+    },
+    "plugins": ["@react-native-google-signin/google-signin"]
   }
 }
