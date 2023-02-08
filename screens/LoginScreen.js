@@ -10,11 +10,16 @@ import { Input, Button, Image, Text } from "react-native-elements";
 import { StatusBar } from "expo-status-bar";
 import { auth } from "../firebase";
 import firebase from "firebase";
+import { useTogglePasswordVisibility } from "../components/useTogglePasswordVisibility";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [submitLoading, setSubmitLoading] = useState(false);
+
+  const { paswordVisibility, rightIcon, handlePasswordVisibility } =
+    useTogglePasswordVisibility();
 
   const signIn = () => {
     if (email && setEmail) {
@@ -102,15 +107,24 @@ const LoginScreen = ({ navigation }) => {
               onChangeText={(text) => setPassword(text)}
               onSubmitEditing={signIn}
             /> */}
-            <TextInput
-              style={styles.box}
-              name="password"
-              secureTextEntry
-              placeholder="Password"
-              value={password}
-              onChangeText={(text) => setPassword(text)}
-              onSubmitEditing={signIn}
-            />
+            <View style={styles.inputPass}>
+              <TextInput
+                style={styles.inputField}
+                name="password"
+                placeholder="Password"
+                autoCapitalize="none"
+                autoCorrect={false}
+                textContentType='newPassword'
+                secureTextEntry={paswordVisibility}
+                value={password}
+                enablesReturnKeyAutomatically
+                onChangeText={(text) => setPassword(text)}
+                onSubmitEditing={signIn}
+              />
+              <Pressable onPress={handlePasswordVisibility}>
+                <MaterialCommunityIcons name={rightIcon} size={22} color='#232323' />
+              </Pressable>
+            </View>
           </View>
           {/* <Button
             loading={submitLoading}
@@ -125,8 +139,8 @@ const LoginScreen = ({ navigation }) => {
           </Pressable>
           <Button
             title='Forgot Password?'
-            onPress={() => {ForgotPassword()} }
-            titleStyle={{ color: '#00a86b' }}
+            onPress={() => {ForgotPassword()}}
+            titleStyle={{color: '#00a86b'}}
             type='clear'
             style={styles.button}
           />
@@ -228,4 +242,15 @@ const styles = StyleSheet.create({
     borderColor: "#00A68B",
     borderStyle: "solid",
   },
+  inputPass: {
+    backgroundColor: 'white',
+    width: '100%',
+    borderRadius: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'gray',
+    marginBottom: 10,
+    marginTop: 10,
+  }
 });
