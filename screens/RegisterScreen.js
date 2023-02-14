@@ -251,7 +251,7 @@ const styles = StyleSheet.create({
   },
   inputField: {
     padding: 10,
-    fontSize: 15,
+    fontSize: 14,
     width: "90%",
   },
   inputPass: {
