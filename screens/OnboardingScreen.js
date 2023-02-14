@@ -1,51 +1,53 @@
 import React from "react";
-import { StyleSheet, Image, TouchableOpacity } from "react-native";
+import { Image, TouchableOpacity, View, Text, StyleSheet} from "react-native";
 import { Button } from "react-native-elements";
 
-import Onboarding from "react-native-onboarding-swiper";
-import { View } from "react-native-web";
+import Onboarding from 'react-native-onboarding-swiper';
 
 const Dots = ({selected}) => {
     let backgroundColor;
 
-    backgroundColor = selected ? 'rgba(0, 0, 0, 0)' : 'rgba(0, 0, 0, 0.3)';
+    backgroundColor = selected ? 'rgba(0, 0, 0, 0.8)' : 'rgba(0, 0, 0, 0.3)';
 
     return (
-        <View
-        style={{
-            width: 5,
-            height: 5,
-            marginHorizontal: 3,
-            backgroundColor
-        }}
+        <View 
+            style={{
+                width:6,
+                height: 6,
+                marginHorizontal: 3,
+                backgroundColor
+            }}
         />
-    )
+    );
 }
 
-const Skip = ({ ...props }) => {
-    <Button
-        title="Skip"
-        color='#000000'
-    />
-}
-
-const Next = ({ ...props }) => {
-    <Button
-        title='Next'
-        color='#000000'
-        {...props}
-    />
-}
-
-const Done = ({ ...props }) => {
+const Skip = ({...props}) => (
     <TouchableOpacity
-        style={{ marginHorizontal: 8 }}
+        style={{marginHorizontal:10}}
         {...props}
-        >
-        <Text style={{ fontSize: 16 }}>Done</Text>
+    >
+        <Text style={{fontSize:16}}>Skip</Text>
     </TouchableOpacity>
+);
 
-}
+const Next = ({...props}) => (
+    <TouchableOpacity
+        style={{marginHorizontal:10}}
+        {...props}
+    >
+        <Text style={{fontSize:16}}>Next</Text>
+    </TouchableOpacity>
+);
+
+const Done = ({...props}) => (
+    <TouchableOpacity
+        style={{marginHorizontal:10}}
+        {...props}
+    >
+        <Text style={{fontSize:16}}>Done</Text>
+    </TouchableOpacity>
+);
+
 const OnboardingScreen = ({ navigation }) => {
     return (
         <Onboarding
@@ -57,20 +59,34 @@ const OnboardingScreen = ({ navigation }) => {
             onDone={() => navigation.navigate("Login")}
             pages={[
                 {
-                    backgroundColor: '#fff',
-                    image: <Image source={require('../assets/logo.png')} />,
-                    title: 'Welcome to Save Money',
-                    subtitle: 'Take control of your money and save them by tracking your expenses',
+                    backgroundColor: '#9ebf99',
+                    image: <Image source={require('../assets/onboarding-img1.png')} />,
+                    title: 'Connect to the World',
+                    subtitle: 'A New Way To Connect With The World',
                 },
                 {
-                    backgroundColor: '#fff',
-                    image: <Image source={require('../assets/Onboarding-image-2.jpg')} />,
-                    title: 'Save money with ease',
-                    subtitle: 'Easily',
+                    backgroundColor: '#ffffe0',
+                    image: <Image source={require('../assets/onboarding-img2.png')} />,
+                    title: 'Share Your Favorites',
+                    subtitle: 'Share Your Thoughts With Similar Kind of People',
                 },
+                {
+                    backgroundColor: '#f2b3bf',
+                    image: <Image source={require('../assets/onboarding-img3.png')} />,
+                    title: 'Become The Star',
+                    subtitle: 'Let The Spot Light Capture You',
+                }
             ]}
         />
     )
 }
 
 export default OnboardingScreen;
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1, 
+      alignItems: 'center', 
+      justifyContent: 'center'
+    },
+  });
