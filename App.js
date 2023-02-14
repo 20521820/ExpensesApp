@@ -11,6 +11,7 @@ import RegisterScreen from './screens/RegisterScreen'
 import AddScreen from './screens/AddScreen'
 import UpdateScreen from './screens/UpdateScreen'
 import AllTransactions from './screens/AllTransactions'
+import OnboardingScreen from './screens/OnboardingScreen'
 
 import Profile from './screens/Profile'
 
@@ -52,6 +53,7 @@ export default function App() {
     <NavigationContainer>
       <StatusBar style='dark' />
       <Stack.Navigator screenOptions={globalScreenOptions}>
+        <Stack.Screen name='Onboarding' component={OnboardingScreen}/>
         <Stack.Screen name='Login' component={LoginScreen} />
         <Stack.Screen name='Register' component={RegisterScreen} />
         <Stack.Screen name='Home' component={HomeScreen} />
@@ -60,8 +62,8 @@ export default function App() {
         <Stack.Screen name='Update' component={UpdateScreen} />
         <Stack.Screen name='All' component={AllTransactions} />
         <Stack.Screen name='Profile' component={Profile} />
-
       </Stack.Navigator>
     </NavigationContainer>
+    
   )
 }
