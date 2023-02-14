@@ -151,6 +151,7 @@ const LoginScreen = ({ navigation }) => {
             type='clear'
             style={styles.button}
           />
+          
           {/* <Button
             onPress={() => navigation.navigate("Register")}
             containerStyle={styles.button}
