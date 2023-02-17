@@ -193,7 +193,7 @@ const RegisterScreen = ({ navigation }) => {
       <Pressable style={styles.buttonRegister} onPress={signUp} loading={submitLoading}>
         <Text style={styles.text} >Sign up</Text>
       </Pressable>
-      <Text style={{ marginTop: 8, fontSize: 12, letterSpacing: 0.25, color: 'gray', fontWeight: 'bold' }}>Or with</Text>
+      {/* <Text style={{ marginTop: 8, fontSize: 12, letterSpacing: 0.25, color: 'gray', fontWeight: 'bold' }}>Or with</Text> */}
       <Button
         title="Already have an account? Login"
         onPress={() => navigation.navigate("Login")}
