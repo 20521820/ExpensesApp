@@ -59,22 +59,41 @@ const OnboardingScreen = ({ navigation }) => {
             onDone={() => navigation.navigate("Login")}
             pages={[
                 {
-                    backgroundColor: '#9ebf99',
-                    image: <Image source={require('../assets/onboarding-img1.png')} />,
-                    title: 'Connect to the World',
-                    subtitle: 'A New Way To Connect With The World',
+                    backgroundColor: '#ffffff',
+                    image: <Image source={require('../assets/on-img1.png')} />,
+                    title: 'TRACK INVESTMENTS',
+                    subtitle: 'Cum sociis nanoque penatribus et magins dis parturient monter, nascetur ridiculus mus',
+                    titleStyles: 'bold'
                 },
                 {
-                    backgroundColor: '#ffffe0',
-                    image: <Image source={require('../assets/onboarding-img2.png')} />,
-                    title: 'Share Your Favorites',
-                    subtitle: 'Share Your Thoughts With Similar Kind of People',
+                    backgroundColor: '#ffffff',
+                    image: <Image source={require('../assets/on-img2.jpg')} />,
+                    title: 'SCHEDULE PAYMENT',
+                    subtitle: 'Cum sociis nanoque penatribus et magins dis parturient monter, nascetur ridiculus mus',
                 },
                 {
-                    backgroundColor: '#f2b3bf',
-                    image: <Image source={require('../assets/onboarding-img3.png')} />,
-                    title: 'Become The Star',
-                    subtitle: 'Let The Spot Light Capture You',
+                    backgroundColor: '#ffffff',
+                    image: <Image source={require('../assets/on-img3.jpg')} />,
+                    title: 'PAYMENT REMINDERS',
+                    subtitle: 'Cum sociis nanoque penatribus et magins dis parturient monter, nascetur ridiculus mus',
+                },
+                {
+                    backgroundColor: '#ffffff',
+                    image: <Image source={require('../assets/img2.png')} />,
+                    title: 'SPENDINGS CONTROL',
+                    subtitle: 'Cum sociis nanoque penatribus et magins dis parturient monter, nascetur ridiculus mus',
+                },
+                {
+                    backgroundColor: '#ffffff',
+                    image: <Image source={require('../assets/on-img5.jpg')} />,
+                    title: 'BUDGET CATEGORY',
+                    subtitle: 'Cum sociis nanoque penatribus et magins dis parturient monter, nascetur ridiculus mus',
+                },
+                {
+                    backgroundColor: '#ffffff',
+                    image: <Image source={require('../assets/on-img6.jpg')} />,
+                    title: 'BALANCED BUDGET',
+                    subtitle: 'Cum sociis nanoque penatribus et magins dis parturient monter, nascetur ridiculus mus',
                 }
             ]}
         />
